@@ -59,7 +59,9 @@ http://msaez.io/#/storming/NVaFbcVDMkP3uU83TbQd72J4OqU2/mine/c004806409d14aa5fe4
 
 
   - 이벤트스토밍: 
-    - 스티커 색상별 객체의 의미를 제대로 이해하여 헥사고날 아키텍처와의 연계 설계에 적절히 반영하고 있는가?
+    - 스티커 색상별 객체의 의미를 제대로 이해하여 
+    
+    사고날 아키텍처와의 연계 설계에 적절히 반영하고 있는가?
     - 각 도메인 이벤트가 의미있는 수준으로 정의되었는가?
     - 어그리게잇: Command와 Event 들을 ACID 트랜잭션 단위의 Aggregate 로 제대로 묶었는가?
     - 기능적 요구사항과 비기능적 요구사항을 누락 없이 반영하였는가?    
@@ -201,8 +203,8 @@ http://msaez.io/#/storming/NVaFbcVDMkP3uU83TbQd72J4OqU2/mine/c004806409d14aa5fe4
 
 ## 헥사고날 아키텍처 다이어그램 도출
     
-![image](https://user-images.githubusercontent.com/487999/79684772-eba9ab00-826e-11ea-9405-17e2bf39ec76.png)
-
+![image](https://github.com/gogohs/food-delivery/blob/master/img1.PNG?raw=true)
+![image](https://github.com/gogohs/food-delivery/blob/master/img2.PNG?raw=true)
 
     - Chris Richardson, MSA Patterns 참고하여 Inbound adaptor와 Outbound adaptor를 구분함
     - 호출관계에서 PubSub 과 Req/Resp 를 구분함
