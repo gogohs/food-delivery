@@ -51,12 +51,24 @@ http http://localhost:8081/book bookName=AAA bookStatus=01
 http http://localhost:8081/book bookName=BBB bookStatus=01
 ```
 1. 고객이 도서를 선택하여 예약한다. (예약상태 업데이트 = 01)
+```sh
+http http://localhost:8082/reservation bookId=1 reservationStatus=01
+```
 1. 예약 후 도서정보 상태를 업데이트 한다. (도서상태 업데이트=02)  
 1. 예약 후 대여정보에 등록된다. (대여상태 업데이트=01)
 1. 고객이 예약한 도서를 대여한다 (대여상태 업데이트=02)
+```sh
+http PATCH http://localhost:8083/rental/rented id=1 reservationId=1 bookId=1 reservationStatus=02
+```
 1. 고객이 예약을 반납한다. (대여상태 업데이트=03)
+```sh
+http PATCH http://localhost:8083/rental/returned id=1 reservationId=1 bookId=1 reservationStatus=03
+```
 1. 반납 후 도서정보를 상태를 업데이트 한다. (도서정보 업데이트=01)
 1. 고객이 예약을 취소한다. (예약상태 업데이트=02)
+```sh
+http PATCH http://localhost:8082/reservationupdate bookId=2 reservationStatus=02
+```
 1. 취소 후 도서정보를 상태를 업데이트한다. (도서상태 업데이트=01)
 1. 고객이 예약 및 대여상태를 중간중간 조회한다.
 1. 예약 및 대여상태가 바뀔 때 마다 카톡으로 알림을 보낸다.
