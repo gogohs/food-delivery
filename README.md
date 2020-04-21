@@ -12,10 +12,8 @@ http://msaez.io/#/storming/NVaFbcVDMkP3uU83TbQd72J4OqU2/mine/c004806409d14aa5fe4
 
 ## EVENT STORMING
 
-EVENT STORMING 완성
 ![IMG_3081](https://user-images.githubusercontent.com/61151016/79801874-e2692d00-8399-11ea-8c82-f10dee2061d3.jpg)
 
-EVENT STORMING 시작
 ![EVENTSTOMRING초반](https://user-images.githubusercontent.com/61151016/79916367-91257000-8463-11ea-8020-b85f32056829.JPG)
 
 ## 헥사고날 아키텍처 다이어그램 도출
