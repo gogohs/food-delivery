@@ -11,6 +11,15 @@ http://msaez.io/#/storming/NVaFbcVDMkP3uU83TbQd72J4OqU2/mine/c004806409d14aa5fe4
 
 ![IMG_3081](https://user-images.githubusercontent.com/61151016/79801874-e2692d00-8399-11ea-8c82-f10dee2061d3.jpg)
 
+## 헥사고날 아키텍처 다이어그램 도출
+    
+![image](https://github.com/gogohs/food-delivery/blob/master/img1.PNG?raw=true)
+![image](https://github.com/gogohs/food-delivery/blob/master/img2.PNG?raw=true)
+
+    - Chris Richardson, MSA Patterns 참고하여 Inbound adaptor와 Outbound adaptor를 구분함
+    - 호출관계에서 PubSub 과 Req/Resp 를 구분함
+    - 서브 도메인과 바운디드 컨텍스트의 분리:  각 팀의 KPI 별로 아래와 같이 관심 구현 스토리를 나눠가짐
+
 
 # 예제 - 도서대여
 
@@ -903,12 +912,13 @@ Transfer-Encoding: chunked
 
 ```
 
-CI/CD 실행결과
+# CI/CD 실행 결과
 
 https://github.com/suhyoungjoon/syj/issues/1#issue-604295024
 ![CLOUD과제_devops (azure)](https://user-images.githubusercontent.com/61151016/79915233-92ee3400-8461-11ea-9e1f-085e9ef902c6.jpg)
 ![CLOUD과제_POD실행화면 (azure)](https://user-images.githubusercontent.com/61151016/79915678-61299d00-8462-11ea-9f65-5272a21405ca.jpg)
 
+---------------------------------------------------------------------------------------------------------------------------------------
 # 체크포인트
 
 - 분석 설계
