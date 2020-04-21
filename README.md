@@ -84,6 +84,824 @@ http PATCH http://localhost:8082/reservationupdate bookId=2 reservationStatus=02
     1. 고객이 에약내역 및 대여상태를 my-page(프론트엔드)에서 확인할 수 있어야 한다  CQRS
     1. 예약 및 대여상태가 바뀔때마다 카톡 등으로 알림을 줄 수 있어야 한다  Event driven
 
+# 서비스 실행 결과
+```sh
+(base) C:\Users\SKCC>http http://localhost:8081/books
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:44:16 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "books": []
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8081/profile/books"
+        },
+        "self": {
+            "href": "http://localhost:8081/books{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 0,
+        "totalPages": 0
+    }
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8081/book bookName=Cloud_Intensive_Course bookStatus=01
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:45:49 GMT
+Transfer-Encoding: chunked
+
+{
+    "bookName": "Cloud_Intensive_Course",
+    "bookStatus": "01",
+    "id": 1
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8081/book bookName=Data_Structure bookStatus=01
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:46:19 GMT
+Transfer-Encoding: chunked
+
+{
+    "bookName": "Data_Structure",
+    "bookStatus": "01",
+    "id": 2
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8081/book bookName=Math bookStatus=01
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:46:27 GMT
+Transfer-Encoding: chunked
+
+{
+    "bookName": "Math",
+    "bookStatus": "01",
+    "id": 3
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8081/books
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:46:33 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "books": [
+            {
+                "_links": {
+                    "book": {
+                        "href": "http://localhost:8081/books/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8081/books/1"
+                    }
+                },
+                "bookName": "Cloud_Intensive_Course",
+                "bookStatus": "01"
+            },
+            {
+                "_links": {
+                    "book": {
+                        "href": "http://localhost:8081/books/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8081/books/2"
+                    }
+                },
+                "bookName": "Data_Structure",
+                "bookStatus": "01"
+            },
+            {
+                "_links": {
+                    "book": {
+                        "href": "http://localhost:8081/books/3"
+                    },
+                    "self": {
+                        "href": "http://localhost:8081/books/3"
+                    }
+                },
+                "bookName": "Math",
+                "bookStatus": "01"
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8081/profile/books"
+        },
+        "self": {
+            "href": "http://localhost:8081/books{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 3,
+        "totalPages": 1
+    }
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8082/reservation bookId=1 bookName=Cloud_Intensive_Course reservationStatus=01
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:47:34 GMT
+Transfer-Encoding: chunked
+
+{
+    "bookId": 1,
+    "createDate": null,
+    "id": 1,
+    "mType": "reserved",
+    "reservationDate": null,
+    "reservationStatus": "01"
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8083/rentals
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:47:58 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "rentals": [
+            {
+                "_links": {
+                    "rental": {
+                        "href": "http://localhost:8083/rentals/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8083/rentals/1"
+                    }
+                },
+                "bookId": 1,
+                "mType": null,
+                "rentalStatus": "01",
+                "reservationId": 1
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8083/profile/rentals"
+        },
+        "self": {
+            "href": "http://localhost:8083/rentals{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 1,
+        "totalPages": 1
+    }
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8082/reservation bookId=2 bookName=Data_Structure reservationStatus=01
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:50:34 GMT
+Transfer-Encoding: chunked
+
+{
+    "bookId": 2,
+    "createDate": null,
+    "id": 2,
+    "mType": "reserved",
+    "reservationDate": null,
+    "reservationStatus": "01"
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8083/rentals
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:50:39 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "rentals": [
+            {
+                "_links": {
+                    "rental": {
+                        "href": "http://localhost:8083/rentals/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8083/rentals/1"
+                    }
+                },
+                "bookId": 1,
+                "mType": null,
+                "rentalStatus": "01",
+                "reservationId": 1
+            },
+            {
+                "_links": {
+                    "rental": {
+                        "href": "http://localhost:8083/rentals/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8083/rentals/2"
+                    }
+                },
+                "bookId": 2,
+                "mType": null,
+                "rentalStatus": "01",
+                "reservationId": 2
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8083/profile/rentals"
+        },
+        "self": {
+            "href": "http://localhost:8083/rentals{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 2,
+        "totalPages": 1
+    }
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8081/books
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:50:54 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "books": [
+            {
+                "_links": {
+                    "book": {
+                        "href": "http://localhost:8081/books/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8081/books/1"
+                    }
+                },
+                "bookName": "Cloud_Intensive_Course",
+                "bookStatus": "02"
+            },
+            {
+                "_links": {
+                    "book": {
+                        "href": "http://localhost:8081/books/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8081/books/2"
+                    }
+                },
+                "bookName": "Data_Structure",
+                "bookStatus": "02"
+            },
+            {
+                "_links": {
+                    "book": {
+                        "href": "http://localhost:8081/books/3"
+                    },
+                    "self": {
+                        "href": "http://localhost:8081/books/3"
+                    }
+                },
+                "bookName": "Math",
+                "bookStatus": "01"
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8081/profile/books"
+        },
+        "self": {
+            "href": "http://localhost:8081/books{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 3,
+        "totalPages": 1
+    }
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8083/rentals
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:51:38 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "rentals": [
+            {
+                "_links": {
+                    "rental": {
+                        "href": "http://localhost:8083/rentals/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8083/rentals/1"
+                    }
+                },
+                "bookId": 1,
+                "mType": null,
+                "rentalStatus": "01",
+                "reservationId": 1
+            },
+            {
+                "_links": {
+                    "rental": {
+                        "href": "http://localhost:8083/rentals/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8083/rentals/2"
+                    }
+                },
+                "bookId": 2,
+                "mType": null,
+                "rentalStatus": "01",
+                "reservationId": 2
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8083/profile/rentals"
+        },
+        "self": {
+            "href": "http://localhost:8083/rentals{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 2,
+        "totalPages": 1
+    }
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8083/rental/rented id=1 reservationId=1 bookId=1 rentalStatus=02
+HTTP/1.1 405
+Allow: PATCH
+Content-Type: application/json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:52:24 GMT
+Transfer-Encoding: chunked
+
+{
+    "error": "Method Not Allowed",
+    "message": "Request method 'POST' not supported",
+    "path": "/rental/rented",
+    "status": 405,
+    "timestamp": "2020-04-21T05:52:24.341+0000"
+}
+
+
+(base) C:\Users\SKCC>http PATCH http://localhost:8083/rental/rented id=1 reservationId=1 bookId=1 rentalStatus=02
+HTTP/1.1 200
+Content-Length: 0
+Date: Tue, 21 Apr 2020 05:52:33 GMT
+
+
+
+
+(base) C:\Users\SKCC>http http://localhost:8083/rentals
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:52:44 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "rentals": [
+            {
+                "_links": {
+                    "rental": {
+                        "href": "http://localhost:8083/rentals/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8083/rentals/1"
+                    }
+                },
+                "bookId": 1,
+                "mType": "rented",
+                "rentalStatus": "02",
+                "reservationId": 1
+            },
+            {
+                "_links": {
+                    "rental": {
+                        "href": "http://localhost:8083/rentals/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8083/rentals/2"
+                    }
+                },
+                "bookId": 2,
+                "mType": null,
+                "rentalStatus": "01",
+                "reservationId": 2
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8083/profile/rentals"
+        },
+        "self": {
+            "href": "http://localhost:8083/rentals{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 2,
+        "totalPages": 1
+    }
+}
+
+
+(base) C:\Users\SKCC>http PATCH http://localhost:8083/rental/returned id=1 reservationId=1 bookId=1 rentalStatus=03
+HTTP/1.1 200
+Content-Length: 0
+Date: Tue, 21 Apr 2020 05:53:30 GMT
+
+
+
+
+(base) C:\Users\SKCC>http http://localhost:8083/rentals
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:53:46 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "rentals": [
+            {
+                "_links": {
+                    "rental": {
+                        "href": "http://localhost:8083/rentals/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8083/rentals/1"
+                    }
+                },
+                "bookId": 1,
+                "mType": "returned",
+                "rentalStatus": "03",
+                "reservationId": null
+            },
+            {
+                "_links": {
+                    "rental": {
+                        "href": "http://localhost:8083/rentals/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8083/rentals/2"
+                    }
+                },
+                "bookId": 2,
+                "mType": null,
+                "rentalStatus": "01",
+                "reservationId": 2
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8083/profile/rentals"
+        },
+        "self": {
+            "href": "http://localhost:8083/rentals{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 2,
+        "totalPages": 1
+    }
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8082/reservations
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:54:50 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "reservations": [
+            {
+                "_links": {
+                    "reservation": {
+                        "href": "http://localhost:8082/reservations/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8082/reservations/1"
+                    }
+                },
+                "bookId": 1,
+                "createDate": null,
+                "mType": "reserved",
+                "reservationDate": null,
+                "reservationStatus": "01"
+            },
+            {
+                "_links": {
+                    "reservation": {
+                        "href": "http://localhost:8082/reservations/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8082/reservations/2"
+                    }
+                },
+                "bookId": 2,
+                "createDate": null,
+                "mType": "reserved",
+                "reservationDate": null,
+                "reservationStatus": "01"
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8082/profile/reservations"
+        },
+        "self": {
+            "href": "http://localhost:8082/reservations{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 2,
+        "totalPages": 1
+    }
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8082/reservationupdate id=2 reservationStatus=02 bookId=2
+HTTP/1.1 405
+Allow: PATCH
+Content-Type: application/json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:55:27 GMT
+Transfer-Encoding: chunked
+
+{
+    "error": "Method Not Allowed",
+    "message": "Request method 'POST' not supported",
+    "path": "/reservationupdate",
+    "status": 405,
+    "timestamp": "2020-04-21T05:55:27.157+0000"
+}
+
+
+(base) C:\Users\SKCC>http PATCH http://localhost:8082/reservationupdate id=2 reservationStatus=02 bookId=2
+HTTP/1.1 200
+Content-Length: 0
+Date: Tue, 21 Apr 2020 05:55:34 GMT
+
+
+
+
+(base) C:\Users\SKCC>http PATCH http://localhost:8081/books
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:55:48 GMT
+Transfer-Encoding: chunked
+
+{
+    "error": "Not Found",
+    "message": "No message available",
+    "path": "/books",
+    "status": 404,
+    "timestamp": "2020-04-21T05:55:48.908+0000"
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8081/books
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:55:56 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "books": [
+            {
+                "_links": {
+                    "book": {
+                        "href": "http://localhost:8081/books/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8081/books/1"
+                    }
+                },
+                "bookName": "Cloud_Intensive_Course",
+                "bookStatus": "01"
+            },
+            {
+                "_links": {
+                    "book": {
+                        "href": "http://localhost:8081/books/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8081/books/2"
+                    }
+                },
+                "bookName": "Data_Structure",
+                "bookStatus": "01"
+            },
+            {
+                "_links": {
+                    "book": {
+                        "href": "http://localhost:8081/books/3"
+                    },
+                    "self": {
+                        "href": "http://localhost:8081/books/3"
+                    }
+                },
+                "bookName": "Math",
+                "bookStatus": "01"
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8081/profile/books"
+        },
+        "self": {
+            "href": "http://localhost:8081/books{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 3,
+        "totalPages": 1
+    }
+}
+
+
+(base) C:\Users\SKCC>http http://localhost:8082/reservations
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:56:09 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "reservations": [
+            {
+                "_links": {
+                    "reservation": {
+                        "href": "http://localhost:8082/reservations/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8082/reservations/1"
+                    }
+                },
+                "bookId": 1,
+                "createDate": null,
+                "mType": "reserved",
+                "reservationDate": null,
+                "reservationStatus": "01"
+            },
+            {
+                "_links": {
+                    "reservation": {
+                        "href": "http://localhost:8082/reservations/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8082/reservations/2"
+                    }
+                },
+                "bookId": 2,
+                "createDate": null,
+                "mType": "reservationupdate",
+                "reservationDate": null,
+                "reservationStatus": "02"
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8082/profile/reservations"
+        },
+        "self": {
+            "href": "http://localhost:8082/reservations{?page,size,sort}",
+            "templated": true
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 2,
+        "totalPages": 1
+    }
+}
+
+
+(base) C:\Users\SKCC>
+(base) C:\Users\SKCC>
+(base) C:\Users\SKCC>
+(base) C:\Users\SKCC>http http://localhost:8085/myPages
+HTTP/1.1 200
+Content-Type: application/hal+json;charset=UTF-8
+Date: Tue, 21 Apr 2020 05:56:37 GMT
+Transfer-Encoding: chunked
+
+{
+    "_embedded": {
+        "myPages": [
+            {
+                "_links": {
+                    "myPage": {
+                        "href": "http://localhost:8085/myPages/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8085/myPages/1"
+                    }
+                },
+                "bookId": 1,
+                "bookName": null,
+                "rentalId": 1,
+                "rentalStatus": "03",
+                "reservationDate": null,
+                "reservationId": 1,
+                "reservationStatus": "01"
+            },
+            {
+                "_links": {
+                    "myPage": {
+                        "href": "http://localhost:8085/myPages/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8085/myPages/2"
+                    }
+                },
+                "bookId": 2,
+                "bookName": null,
+                "rentalId": null,
+                "rentalStatus": null,
+                "reservationDate": null,
+                "reservationId": 2,
+                "reservationStatus": "02"
+            }
+        ]
+    },
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8085/profile/myPages"
+        },
+        "search": {
+            "href": "http://localhost:8085/myPages/search"
+        },
+        "self": {
+            "href": "http://localhost:8085/myPages"
+        }
+    }
+}
+
+```
 
 # 체크포인트
 
