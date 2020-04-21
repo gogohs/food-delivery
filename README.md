@@ -903,6 +903,11 @@ Transfer-Encoding: chunked
 
 ```
 
+CI/CD 실행결과
+
+https://github.com/suhyoungjoon/syj/issues/1#issue-604295024
+
+
 # 체크포인트
 
 - 분석 설계
