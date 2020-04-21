@@ -1,7 +1,8 @@
-소스코드
+## 소스코드
+
 https://drive.google.com/file/d/1Af344MBBXZWvMu0wLjEkL_XNWihfxljW/view?usp=sharing
 
-EVENT STORMING 결과 
+## MSAEAZ
 
 VERSION_0.9
 http://msaez.io/#/storming/NVaFbcVDMkP3uU83TbQd72J4OqU2/mine/3c8f5eeec2a5b93ab3509e91c18528a8/-M5M9K_1izVA8qGysnfy
@@ -9,7 +10,13 @@ http://msaez.io/#/storming/NVaFbcVDMkP3uU83TbQd72J4OqU2/mine/3c8f5eeec2a5b93ab35
 VERSION_0.1
 http://msaez.io/#/storming/NVaFbcVDMkP3uU83TbQd72J4OqU2/mine/c004806409d14aa5fe40278ad20b8bc4/-M5LBN5LgZUeVj0pCgKU
 
+## EVENT STORMING
+
+EVENT STORMING 완성
 ![IMG_3081](https://user-images.githubusercontent.com/61151016/79801874-e2692d00-8399-11ea-8c82-f10dee2061d3.jpg)
+
+EVENT STORMING 시작
+![EVENTSTOMRING초반](https://user-images.githubusercontent.com/61151016/79916367-91257000-8463-11ea-8020-b85f32056829.JPG)
 
 ## 헥사고날 아키텍처 다이어그램 도출
     
