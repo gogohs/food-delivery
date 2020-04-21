@@ -1,3 +1,6 @@
+zip파일 download
+https://drive.google.com/file/d/1Af344MBBXZWvMu0wLjEkL_XNWihfxljW/view?usp=sharing
+
 EVENT STORMING 결과 
 
 VERSION_0.9
