@@ -906,6 +906,7 @@ Transfer-Encoding: chunked
 CI/CD 실행결과
 
 https://github.com/suhyoungjoon/syj/issues/1#issue-604295024
+![CLOUD과제_devops (azure)](https://user-images.githubusercontent.com/61151016/79915233-92ee3400-8461-11ea-9e1f-085e9ef902c6.jpg)
 
 
 # 체크포인트
